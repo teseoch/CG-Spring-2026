@@ -59,11 +59,12 @@ Display the mesh with the appropriate shading.
 
 Use `plot_mesh_with_normals` to set the shading in the viewer to use the normals `n` you computed.
 
-The scaling `0.01` is used to scale the lines to a reasonable size; that is, for the cube `0.5` is ok, while for the sphere `0.01` is better.
+The scaling `0.01` is used to scale the lines to a reasonable size; that is, for the cube `0.5` is ok, while for the sphere `0.1` is better.
 
 
 ### Flat Shading [2pt]
-![](img/face.png?raw=true)
+![](img/faces.png?raw=true)
+![](img/facec.png?raw=true)
 
 
 The simplest shading technique is flat shading, where each polygon of an object
@@ -77,7 +78,8 @@ the input mesh with flat shading.
 
 
 ### Per-vertex Shading [2pt]
-![](img/vertex.png?raw=true)
+![](img/vertexc.png?raw=true)
+![](img/vertexs.png?raw=true)
 
 Flat shading may produce visual artifacts, due to the color discontinuity
 between neighboring faces. Specular highlights may be rendered poorly with flat
@@ -89,19 +91,9 @@ per-vertex shading.
 *Relevant `igl` functions:* `igl.per_vertex_normals`.
 
 
-### Per-corner Shading [2pt]
-![](img/corner.png?raw=true)
-
-On models with sharp feature lines, averaging the per-face normals on the feature, as done for per-vertex shading, may result in blurred rendering. It is possible to avoid this limitation and to render crisp sharp features by using per-corner normals. In this case, a different normal is assigned to each face corner; this implies that every vertex will get a (possibly different) normal for every adjacent face. A threshold parameter is used to decide when an edge belongs to a sharp feature. The threshold is applied to the angle between the two corner normals: if it is less than the threshold value, the normals must be averaged, otherwise they are kept untouched. Your program should compute the appropriate shading normals (with a threshold of your choice) and shade the input mesh with per-vertex shading.
-
-*Relevant `igl` functions:* `igl.per_corner_normals`.
-
-Compare the result with the one obtained with flat and per-vertex shading. Experiment with the threshold value.
-
-
 Required output of this section:
 
- * Plot of the provided meshes shaded with flat, per-vertex, and per-corner normals.
+ * Plot of the provided meshes with flat and per-vertex.
 
 
 ## Connected Components [3pt]
@@ -159,7 +151,13 @@ by applying the following rules:
 
 
 
-![](img/subdivision.png?raw=true)
+![](img/sub1.png?raw=true)
+![](img/sub2.png?raw=true)
+
+After reapplying the same algorithm on the subdivided mesh, it gets smoohter.
+
+![](img/sub3.png?raw=true)
+![](img/sub4.png?raw=true)
 
 Fill in the appropriate source code sections to display and subdivide the mesh.
 
